@@ -1,9 +1,3 @@
-<?php
-    include_once("connection/connection.php");
-
-  
-?>
-
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -45,18 +39,8 @@
 </head>
 <body>
 <div id="contact" class="container">
-        <?php if(isset($_SESSION["errores"])){
-            var_dump($_SESSION["errores"]);
-        }
-        
-        ?>
-
-        <?php if(isset($_SESSION["completado"])){
-            echo "Registro completado";
-        }
-        
-        ?>
-        <form action="./comprobacion_datos.php" method="POST" class="mt-2 mx-auto">
+       
+        <form action="../controller/registroController.php" method="POST" class="mt-2 mx-auto">
             <fieldset class="form-row reset p-4 align-items-center border border-primary ">
                 <legend class="reset text-light border border-primary px-2 py-1">Registrate</legend>
 
@@ -104,11 +88,5 @@
         </form>
     </div>
 
-    <?php 
-        if(isset($_SESSION["errores"])){
-            $_SESSION["errores"] = null;
-            session_unset($_SESSION["errores"]);
-        }
-    ?>
 </body>
 </html>
