@@ -12,6 +12,7 @@ try {
     $bd = "proyecto1evaluacion";
 
     $pdo = connection($host, $user, $pass, $bd);
+    session_start();
    
 }  catch (PDOException $e) {
     header("Location: ../errors/Error.php");
