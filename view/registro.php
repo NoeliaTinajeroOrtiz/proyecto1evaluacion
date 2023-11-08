@@ -34,7 +34,7 @@
     <link rel="shortcut icon" href="media/icon/favicon.png" type="image/xpng">
 
     <!-- Titulo -->
-    <title>Login</title>
+    <title>Registro</title>
 
 </head>
 <body>

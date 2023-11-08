@@ -4,21 +4,14 @@ include ('../connection/connection.php');
 
 try {
 
-    $stmt = $pdo->prepare ("INSERT INTO usuario (id, username, mail, telefono, dni, password)
-                            VALUES (null, :username, :mail, :telefono, :dni, :password)");
+    $stmt = $pdo->prepare ("INSERT INTO usuario (id, nombre, mail, telefono, dni, password)
+                            VALUES (null, :nombre, :mail, :telefono, :dni, :password)");
 
-    $nombre = $_POST['username'];
-    $mail = $_POST['mail'];
-    $telefono = $_POST['telefono'];
-    $dni = $_POST['dni'];
-    $password = $_POST['password'];
-
-
-    $stmt->bindParam(':username', $nombre);
-    $stmt->bindParam(':mail', $mail);
-    $stmt->bindParam(':telefono', $telefono);
-    $stmt->bindParam(':dni', $dni);
-    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':nombre', $_POST['username']);
+    $stmt->bindParam(':mail', $_POST['mail']);
+    $stmt->bindParam(':telefono', $_POST['telefono']);
+    $stmt->bindParam(':dni', $_POST['dni']);
+    $stmt->bindParam(':password', $_POST['password']);
 
     $stmt->execute();
 
@@ -26,7 +19,7 @@ try {
     header("Location: ../view/formulario_login.php");
 
 } catch (PDOException $e){
-
+    echo $e;
     require("../errors/Error.php");
 
 }
