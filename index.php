@@ -1,8 +1,6 @@
 <?php
 include ('./connection/connection.php');
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
@@ -33,6 +31,7 @@ include ('./connection/connection.php');
 
     <!-- Titulo -->
     <title>Tienda de informática</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
 
 </head>
 
@@ -41,22 +40,48 @@ include ('./connection/connection.php');
     <?php
     if (isset ($_SESSION["usuario"])){
         ?>
-    <h2>Bienvenido <?= $_SESSION['usuario']['nombre']?></h2>
-        <a href="view/logout.php">Logout</a>
-        <?php
+    <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
+    <a href="view/logout.php">Logout</a>
+    <?php
     }else {
 
         ?>
-        <header>Bienvenidos a la página principal.</header>
-        <div>
-            Si ya está registrado pincha aquí: <a href="view/formulario_login.php">Login</a>
-        </div>
-        <div>
-            Si aun no está registrado, pincha aquí: <a href="view/registro.php">Registro</a>
-        </div>
-        <?php
+    <header>Bienvenidos a la página principal.</header>
+    <div>
+        Si ya está registrado pincha aquí: <a href="view/formulario_login.php">Login</a>
+    </div>
+    <div>
+        Si aun no está registrado, pincha aquí: <a href="view/registro.php">Registro</a>
+    </div>
+    <?php
     }
     ?>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li>
+                <a href="#">Productos</a>
+                <ul>
+                    <li><a href="#">Partes del ordenador</a></li>
+                    <li><a href="#">Periféricos</a></li>
+                    <li><a href="#">Teclas</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Servicios</a>
+                <ul>
+                    <li><a href="#">Diseñar una web</a></li>
+                    <li><a href="#">Comprobar y mejorar tu rendimiento</a></li>
+                    <li><a href="#">Instalar drivers y programas</a></li>
+                    <li><a href="#">Reparación de pc</a></li>
+                    <li><a href="#">Solución de errores</a></li>
+                    <li><a href="#">Mantenimiento de tu web</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
 
 
 </body>
