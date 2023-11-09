@@ -1,11 +1,5 @@
-<?php
-    include_once("connection/connection.php");
-  
-?>
-
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-<!-- Para cambiar de modo oscuro "dark" a modo normal, simplemente cambiarlo por "light"-->
 
 <head>
 
@@ -43,43 +37,38 @@
     <title>Login</title>
 
 </head>
+
 <body>
-<div id="login" class="container"> 
-    <?php if(isset($_SESSION["error_login"])){
-            var_dump($_SESSION["error_login"]);
-        }
-        
-        ?>
-        <form action="login.php" method="POST" class="mt-2 mx-auto">
+    <div id="login" class="container">
+
+
+        <form action="../controller/loginController.php" method="POST" class="mt-2 mx-auto">
             <fieldset class="form-row reset p-4 align-items-center border border-primary ">
                 <legend class="reset text-light border border-primary px-2 py-1">Login</legend>
 
                 <div class="form-group row g-3 mt-1 mx-auto">
-                    <label for="username" class="col-sm-2 col-form-label text-primary">Username:</label>
+                    <label for="username" class="col-sm-2 col-form-label text-primary">Mail:</label>
                     <div class="col-sm-10">
-                        <input type="text" id="username" class="form-control text-info" name="usernameLogin" required />
+                        <input type="text" id="mailLogin" class="form-control text-info" name="mailLogin" required />
                     </div>
                 </div>
 
                 <div class="form-group row g-3 mt-1 mx-auto">
                     <label for="pass" class="col-sm-2 col-form-label text-primary">Password:</label>
                     <div class="col-sm-10">
-                        <input type="password" id="pass" class="form-control text-info" name="pass" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                            title="Debe contener al menos un número y una mayúscula y una minúscula, y al menos 8 o más carácteres"/>
+                        <input type="password" id="pass" class="form-control text-info" name="pass" required
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Debe contener al menos un número y una mayúscula y una minúscula, y al menos 8 o más carácteres" />
                     </div>
                 </div>
 
                 <div class="row g-3 mt-2 w-25 mx-auto">
-                    <input id="sendBttn2" class="btn btn-primary btn-lg" type="submit" value="Send" name="submit"/>
+                    <input id="sendBttn2" class="btn btn-primary btn-lg" type="submit" value="Send" name="submit" />
                 </div>
             </fieldset>
         </form>
     </div>
-    <?php 
-        if(isset($_SESSION["error_login"])){
-            $_SESSION["error_login"] = null;
-            session_unset($_SESSION["error_login"]);
-        }
-        ?>
+
 </body>
+
 </html>

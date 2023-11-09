@@ -1,5 +1,7 @@
 <?php
-include("connection/connection.php");
+include ('./connection/connection.php');
+
+
 
 ?>
 <!DOCTYPE html>
@@ -35,13 +37,27 @@ include("connection/connection.php");
 </head>
 
 <body>
-    <header>Bienvenidos a la página principal.</header>
-    <div>
-        Si ya está registrado pincha aquí: <a href="view/formulario_login.php">Login</a>
-    </div>
-    <div>
-        Si aun no está registrado, pincha aquí: <a href="view/registro.php">Registro</a>
-    </div>
+
+    <?php
+    if (isset ($_SESSION["usuario"])){
+        ?>
+    <h2>Bienvenido <?= $_SESSION['usuario']['nombre']?></h2>
+        <a href="view/logout.php">Logout</a>
+        <?php
+    }else {
+
+        ?>
+        <header>Bienvenidos a la página principal.</header>
+        <div>
+            Si ya está registrado pincha aquí: <a href="view/formulario_login.php">Login</a>
+        </div>
+        <div>
+            Si aun no está registrado, pincha aquí: <a href="view/registro.php">Registro</a>
+        </div>
+        <?php
+    }
+    ?>
+
 
 </body>
 
