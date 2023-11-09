@@ -2,16 +2,22 @@
 
 include ('../connection/connection.php');
 
+
 try {
 
     $stmt = $pdo -> prepare ("SELECT * FROM usuario WHERE mail = :mail");
-    $stmt -> bindParam (':mail' , $_POST['mailLogin']);
+
+    $mailLogin = $_POST['mailLogin'];
+
+    $stmt -> bindParam (':mail' , $mailLogin);
     $stmt -> execute();    
 
     if ($stmt -> rowCount() == 1) {        
        
             echo "Login correcto";
-            header("Location: ../view/paginaprincipal.php");
+            $_SESSION["usuario"] = $stmt -> fetch();
+            header("Location: ../index.php");
+            setcookie ("mail" , $mailLogin , time() + 2 * 24 * 60 * 60);
         
         
     } else {
@@ -26,7 +32,7 @@ try {
     
 }
 
-    
+ 
 
 
 ?>
