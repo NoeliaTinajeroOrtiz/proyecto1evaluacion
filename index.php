@@ -1,5 +1,7 @@
 <?php
 include ('./connection/connection.php');
+include ('./controller/AllProductsController.php');
+include ('./controller/AllServicesController.php');
 
 ?>
 <!DOCTYPE html>
@@ -56,7 +58,7 @@ include ('./connection/connection.php');
     <?php
     }
     ?>
-    
+
     <nav>
         <ul>
             <li><a href="#">Inicio</a></li>
@@ -82,6 +84,62 @@ include ('./connection/connection.php');
             <li><a href="#">Contacto</a></li>
         </ul>
     </nav>
+    <?php
+$results = obtenerProductos($pdo);
+if ($results) {
+    ?>
+    <div class="productos-container">
+        <?php
+    foreach ($results as $row) {
+        ?>
+        <div class="servicio">
+            <?php
+        echo $row['nombreProducto']. "<br>";
+        echo $row['descripcionProducto']. "<br>";
+        echo $row['precioProducto']. "<br>";
+        echo $row['categoriaProducto']. "<br>";
+        echo '<img src="' . $row['imagenProducto'] . '"><br>';
+        echo "<br>";
+        ?>
+        </div>
+        <?php
+    }
+    ?>
+    </div>
+    <?php
+
+} else {
+    echo "Error al obtener los productos";
+}
+
+$results = obtenerServicios($pdo);
+if ($results) {
+    ?>
+    <div class="servicios-container">
+        <?php
+    foreach ($results as $row) {
+        ?>
+        <div class="servicio">
+            <?php
+        echo $row['nombreServicio'] . "<br>";
+        echo $row['descripcionServicio']. "<br>";
+        echo $row['precioServicio']. "<br>";
+        echo $row['categoriaServicio']. "<br>";
+        echo '<img src="' . $row['imagenServicio'] . '"><br>';
+        echo "<br>";
+        ?>
+        </div>
+        <?php
+    }
+    ?>
+    </div>
+    <?php
+} else {
+    echo "Error al obtener los productos";
+}
+
+
+?>
 
 
 </body>

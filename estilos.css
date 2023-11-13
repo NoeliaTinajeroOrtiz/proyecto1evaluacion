@@ -1,12 +1,15 @@
+/*
+*Creamos el estilo para el menú de la página
+*/
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Agregamos una propiedad flex para que los elementos se distribuyan horizontalmente */
+  display: flex; 
 }
 
 nav ul li {
-  flex-grow: 1; /* Hacemos que cada elemento li crezca para ocupar el espacio disponible */
+  flex-grow: 1; 
   position: relative;
 }
 
@@ -22,7 +25,7 @@ nav ul li ul {
   background-color: #fff;
   top: 100%;
   left: 0;
-  width: 100%; /* Hacemos que el submenú ocupe todo el ancho del menú principal */
+  width: 100%; 
 }
 
 nav ul li:hover ul {
@@ -31,4 +34,28 @@ nav ul li:hover ul {
 
 nav ul li ul li {
   display: block;
+}
+/*
+* Creamos el estilo para mostrar los productos y servicios
+*/
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.producto {
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.servicios-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.servicio {
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
 }
