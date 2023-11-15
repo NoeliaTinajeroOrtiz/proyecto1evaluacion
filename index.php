@@ -38,6 +38,7 @@ include ('./view/paginaprincipalView.php');
 </head>
 
 <body>
+    
 
    
 </body>

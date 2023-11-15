@@ -60,7 +60,7 @@ include ('AllServicesView.php');
     ?>
     <nav>
         <ul>
-            <li><a href="./view/paginaprincipalView.php">Inicio</a></li>
+            <li><a href="paginaprincipalView.php">Inicio</a></li>
             <li>
                 <a href="AllProductsView.php">Productos</a>
                 <ul>
