@@ -1,7 +1,7 @@
 <?php
 
-include ('../connection/connection.php');
-include('./model/AllServicesModel.php');
+//include ('../connection/connection.php');
+include('../model/AllServicesModel.php');
 
 
 $results = obtenerServicios($pdo);
