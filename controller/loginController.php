@@ -16,7 +16,7 @@ try {
        
             echo "Login correcto";
             $_SESSION["usuario"] = $stmt -> fetch();
-            header("Location: ../index.php");
+            header("Location: ../view/paginaprincipalView.php");
             //setcookie ("mail" , $mailLogin , time() + 2 * 24 * 60 * 60);
         
         

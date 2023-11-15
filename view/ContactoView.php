@@ -48,10 +48,10 @@
         ?>
     <header>Bienvenidos a la página principal.</header>
     <div>
-        Si ya está registrado pincha aquí: <a href="view/formulario_login.php">Login</a>
+        Si ya está registrado pincha aquí: <a href="formulario_login.php">Login</a>
     </div>
     <div>
-        Si aun no está registrado, pincha aquí: <a href="view/registro.php">Registro</a>
+        Si aun no está registrado, pincha aquí: <a href="registro.php">Registro</a>
     </div>
     <?php
     }
@@ -101,6 +101,10 @@
 
         <input type="submit" value="Enviar">
     </form>
+    <h3>Otras formas de contacto</h3>
+    <p>Teléfono de contacto: 632145782</p>
+    <p> Ubicación: Calle proyecto nº 1</p>
+
 </body>
 
 </html>
