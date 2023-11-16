@@ -50,10 +50,10 @@ include ('AllServicesView.php');
         ?>
     <header>Bienvenidos a la página principal.</header>
     <div>
-        Si ya está registrado pincha aquí: <a href="view/formulario_login.php">Login</a>
+        Si ya está registrado pincha aquí: <a href="formulario_login.php">Login</a>
     </div>
     <div>
-        Si aun no está registrado, pincha aquí: <a href="view/registro.php">Registro</a>
+        Si aun no está registrado, pincha aquí: <a href="registro.php">Registro</a>
     </div>
     <?php
     }
@@ -81,6 +81,7 @@ include ('AllServicesView.php');
                 </ul>
             </li>
             <li><a href="ContactoView.php">Contacto</a></li>
+            <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
 </body>

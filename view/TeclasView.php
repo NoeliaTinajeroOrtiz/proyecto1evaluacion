@@ -80,6 +80,7 @@ include ('../controller/TeclasController.php');
                 </ul>
             </li>
             <li><a href="ContactoView.php">Contacto</a></li>
+            <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
 
@@ -104,6 +105,7 @@ if ($results) {
         <?php
     }
     ?>
+    <button type="button" class="btn btn-primary">Comprar</button>
     </div>
     <?php
 

@@ -1,4 +1,5 @@
 <?php
+//include ('../connection/connection.php');
 include ('../controller/AllServicesController.php');
 ?>
 <!DOCTYPE html>
@@ -79,6 +80,7 @@ include ('../controller/AllServicesController.php');
                 </ul>
             </li>
             <li><a href="ContactoView.php">Contacto</a></li>
+            <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
 
@@ -99,6 +101,7 @@ if ($results) {
         echo '<img src="' . $row['imagenServicio'] . '"><br>';
         echo "<br>";
         ?>
+        <button type="button" class="btn btn-primary">Comprar</button>
         </div>
         <?php
     }
