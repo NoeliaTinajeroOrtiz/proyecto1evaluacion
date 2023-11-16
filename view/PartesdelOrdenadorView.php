@@ -80,6 +80,7 @@ include ('../controller/PartesdelOrdenadorController.php');
                 </ul>
             </li>
             <li><a href="ContactoView.php">Contacto</a></li>
+            <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
 
@@ -100,6 +101,7 @@ if ($results) {
         echo '<img src="' . $row['imagenProducto'] . '"><br>';
         echo "<br>";
         ?>
+        <button type="button" class="btn btn-primary">Comprar</button>
         </div>
         <?php
     }

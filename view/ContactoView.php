@@ -79,6 +79,7 @@
                 </ul>
             </li>
             <li><a href="ContactoView.php">Contacto</a></li>
+            <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
     <h3>Nuestra Empresa</h3>
