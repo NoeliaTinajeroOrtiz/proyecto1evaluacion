@@ -6,6 +6,7 @@ include('../model/AllProductsModel.php');
 
 $results = obtenerProductos($pdo);
 
+
 //$pdo = null;
 
 

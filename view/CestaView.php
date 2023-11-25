@@ -1,6 +1,6 @@
 <?php
 
-include ('../controller/TeclasController.php');
+include ('../model/AllIds.php');
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ include ('../controller/TeclasController.php');
 </head>
 
 <body>
-<?php
+    <?php
     if (isset ($_SESSION["usuario"])){
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
@@ -83,38 +83,85 @@ include ('../controller/TeclasController.php');
             <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
-
     <?php
-$results = obtenerProductosTeclas($pdo);
-if ($results) {
-    ?>
-    <div class="productos-container">
-        <?php
-    foreach ($results as $row) {
-        ?>
-        <div class="producto">
-            <?php
-        echo $row['nombreProducto']. "<br>";
-        echo $row['descripcionProducto']. "<br>";
-        echo $row['precioProducto']. "<br>";
-        echo $row['categoriaProducto']. "<br>";
-        echo '<img src="' . $row['imagenProducto'] . '"><br>';
+// Verificar si la variable de sesión "carritoProductos" existe
+if (!isset($_SESSION["carritoProductos"])) {
+    $_SESSION["carritoProductos"] = array(); // Si no existe, inicializarla como un array vacío
+}
+if (isset ($_POST["idProducto"])) {
+    // Obtener el ID del producto seleccionado
+    $idProducto = $_POST["idProducto"];
+    // Agregar el ID del producto al carrito de productos
+    $_SESSION["carritoProductos"][] = $idProducto;
+}
+
+// Verificar si la variable de sesión "carritoServicios" existe
+if (!isset($_SESSION["carritoServicios"])) {
+    $_SESSION["carritoServicios"] = array(); // Si no existe, inicializarla como un array vacío
+}
+if (isset ($_POST["idServicio"])) {
+    // Obtener el ID del servicio seleccionado
+    $idServicio = $_POST["idServicio"];
+    // Agregar el ID del servicio al carrito de servicios
+    $_SESSION["carritoServicios"][] = $idServicio;
+}
+// Verificar si la variable de sesión "carritoProductos" existe y tiene productos
+if (isset($_SESSION["carritoProductos"]) && count($_SESSION["carritoProductos"]) > 0) {
+
+    // Obtener los IDs de los productos del carrito
+    $idsProductos = $_SESSION["carritoProductos"];
+
+    // Obtener los detalles de los productos desde la base de datos
+    $productosCarrito = obtenerProductosPorIds($pdo, $idsProductos);
+
+    // Mostrar los productos en el carrito
+    foreach ($productosCarrito as $producto) {
+        echo $producto['nombreProducto'] . "<br>";
+        echo $producto['descripcionProducto'] . "<br>";
+        echo $producto['precioProducto'] . "<br>";
+        echo $producto['categoriaProducto'] . "<br>";
+        echo '<img src="' . $producto['imagenProducto'] . '"><br>';
         echo "<br>";
         ?>
-        <form method="POST" action="CestaView.php">
-                <input type="hidden" name="idProducto" value="<?php echo $row['idProducto']; ?>">
-                <button type="submit" class="btn btn-primary">Comprar</button>
-            </form>
-        </div>
-        <?php
-    }
-    ?>
-    
-    </div>
+    <form method="POST" action="Eliminar.php">
+        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+        <button type="submit" class="btn btn-primary">Eliminar</button>
+    </form>
     <?php
+    }
+
+}else {
+    echo "No hay productos en el carrito";
+}
+
+// Verificar si la variable de sesión "carritoServicios" existe y tiene servicios
+if (isset($_SESSION["carritoServicios"]) && count($_SESSION["carritoServicios"]) > 0) {
+
+    // Obtener los IDs de los servicios del carrito
+    $idsServicios = $_SESSION["carritoServicios"];
+    
+    // Obtener los detalles de los servicios desde la base de datos
+    $serviciosCarrito = obtenerServiciosPorIds($pdo, $idsServicios);
+
+    // Mostrar los servicios en el carrito
+    foreach ($serviciosCarrito as $servicio) {
+        
+            echo $servicio['nombreServicio'] . "<br>";
+            echo $servicio['descripcionServicio'] . "<br>";
+            echo $servicio['precioServicio'] . "<br>";
+            echo $servicio['categoriaServicio'] . "<br>";
+            echo '<img src="' . $servicio['imagenServicio'] . '"><br>';
+            echo "<br>";
+            ?>
+    <form method="POST" action="Eliminar.php">
+        <input type="hidden" name="idServicio" value="<?php echo $servicio['idServicio']; ?>">
+        <button type="submit" class="btn btn-primary">Eliminar</button>
+    </form>
+    <?php
+}
 
 } else {
-    echo "Error al obtener los productos";
+    echo "No hay servicios en el carrito";
 }
 ?>
 </body>
