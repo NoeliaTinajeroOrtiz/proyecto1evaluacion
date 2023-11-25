@@ -100,7 +100,10 @@ if ($results) {
         echo '<img src="' . $row['imagenServicio'] . '"><br>';
         echo "<br>";
         ?>
-        <button type="button" class="btn btn-primary">Comprar</button>
+        <form method="POST" action="CestaView.php">
+                <input type="hidden" name="idServicio" value="<?php echo $row['idServicio']; ?>">
+                <button type="submit" class="btn btn-primary">Comprar</button>
+            </form>
         </div>
         <?php
     }

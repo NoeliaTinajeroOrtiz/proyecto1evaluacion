@@ -37,7 +37,7 @@ include ('../controller/AllProductsController.php');
 </head>
 
 <body>
-<?php
+    <?php
     if (isset ($_SESSION["usuario"])){
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
@@ -101,7 +101,10 @@ if ($results) {
         echo '<img src="' . $row['imagenProducto'] . '"><br>';
         echo "<br>";
         ?>
-        <button type="button" class="btn btn-primary">Comprar</button>
+            <form method="POST" action="CestaView.php">
+                <input type="hidden" name="idProducto" value="<?php echo $row['idProducto']; ?>">
+                <button type="submit" class="btn btn-primary">Comprar</button>
+            </form>
         </div>
         <?php
     }
