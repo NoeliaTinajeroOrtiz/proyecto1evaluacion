@@ -42,6 +42,9 @@ include ('../model/AllIds.php');
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
     <a href="logout.php">Logout</a>
+    <form method="POST" action="Comprar.php">
+        <button type="submit" class="btn btn-primary">Comprar</button>
+    </form>
     <?php
     }else {
 

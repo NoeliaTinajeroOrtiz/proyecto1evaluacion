@@ -1,5 +1,5 @@
 <?php
-//include ('./connection/connection.php');
+
 include ('AllProductsView.php');
 include ('AllServicesView.php');
 
