@@ -41,6 +41,7 @@ include ('../model/AllIds.php');
     if (isset ($_SESSION["usuario"])){
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
+    <a href="perfilUsuario.php">Ver mi perfil</a>  
     <a href="logout.php">Logout</a>
     <form method="POST" action="Comprar.php">
         <button type="submit" class="btn btn-primary">Comprar</button>
@@ -87,6 +88,31 @@ include ('../model/AllIds.php');
         </ul>
     </nav>
     <?php
+
+    // Verificar si se ha enviado el formulario de eliminar producto
+if (isset($_POST["eliminarProducto"])) {
+    // Obtener el ID del producto a eliminar
+    $idProductoEliminar = $_POST["eliminarProducto"];
+    // Buscar el índice del producto en el array del carrito de productos
+    $indiceProducto = array_search($idProductoEliminar, $_SESSION["carritoProductos"]);
+    // Eliminar el producto del carrito
+    unset($_SESSION["carritoProductos"][$indiceProducto]);
+    // Redirigir al usuario a la página de la cesta
+    header("Location: CestaView.php");
+    
+}
+// Verificar si se ha enviado el formulario de eliminar servicio
+if (isset($_POST["eliminarServicio"])) {
+    // Obtener el ID del servicio a eliminar
+    $idServicioEliminar = $_POST["eliminarServicio"];
+    // Buscar el índice del servicio en el array del carrito de servicios
+    $indiceServicio = array_search($idServicioEliminar, $_SESSION["carritoServicios"]);
+    // Eliminar el servicio del carrito
+    unset($_SESSION["carritoServicios"][$indiceServicio]);
+    // Redirigir al usuario a la página de la cesta
+    header("Location: CestaView.php");
+    
+}
 // Verificar si la variable de sesión "carritoProductos" existe
 if (!isset($_SESSION["carritoProductos"])) {
     $_SESSION["carritoProductos"] = array(); // Si no existe, inicializarla como un array vacío
@@ -108,6 +134,7 @@ if (isset ($_POST["idServicio"])) {
     // Agregar el ID del servicio al carrito de servicios
     $_SESSION["carritoServicios"][] = $idServicio;
 }
+
 // Verificar si la variable de sesión "carritoProductos" existe y tiene productos
 if (isset($_SESSION["carritoProductos"]) && count($_SESSION["carritoProductos"]) > 0) {
 
@@ -126,8 +153,8 @@ if (isset($_SESSION["carritoProductos"]) && count($_SESSION["carritoProductos"])
         echo '<img src="' . $producto['imagenProducto'] . '"><br>';
         echo "<br>";
         ?>
-    <form method="POST" action="Eliminar.php">
-        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+    <form method="POST" action="">
+        <input type="hidden" name="eliminarProducto" value="<?php echo $producto['idProducto']; ?>">
         <button type="submit" class="btn btn-primary">Eliminar</button>
     </form>
     <?php
@@ -156,8 +183,8 @@ if (isset($_SESSION["carritoServicios"]) && count($_SESSION["carritoServicios"])
             echo '<img src="' . $servicio['imagenServicio'] . '"><br>';
             echo "<br>";
             ?>
-    <form method="POST" action="Eliminar.php">
-        <input type="hidden" name="idServicio" value="<?php echo $servicio['idServicio']; ?>">
+    <form method="POST" action="">
+        <input type="hidden" name="eliminarServicio" value="<?php echo $servicio['idServicio']; ?>">
         <button type="submit" class="btn btn-primary">Eliminar</button>
     </form>
     <?php
