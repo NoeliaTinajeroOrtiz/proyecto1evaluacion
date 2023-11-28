@@ -33,7 +33,7 @@
 
 <?php
 
-session_start();
+//session_start();
 include ('../model/comprasModel.php');
 
 if (isset($_SESSION["usuario"])) {

@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/DiseñarWebModel.php');
 
-
-$results = obtenerServiciosDiseñarWeb($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado
+$results = obtenerServiciosDiseñarWeb($pdo,$orden);
 
 //$pdo = null;
 

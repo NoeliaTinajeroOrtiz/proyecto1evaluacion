@@ -4,7 +4,8 @@
 include('../model/AllProductsModel.php');
 
 
-$results = obtenerProductos($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado 
+$results = obtenerProductos($pdo,$orden);
 
 
 //$pdo = null;

@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/PerifericosModel.php');
 
-
-$results = obtenerProductosPerifericos($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado 
+$results = obtenerProductosPerifericos($pdo,$orden);
 
 //$pdo = null;
 

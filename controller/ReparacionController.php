@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/ReparacionModel.php');
 
-
-$results = obtenerServiciosReparacion($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado
+$results = obtenerServiciosReparacion($pdo,$orden);
 
 //$pdo = null;
 
