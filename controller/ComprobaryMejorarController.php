@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/ComprobaryMejorarModel.php');
 
-
-$results = obtenerServiciosComprobaryMejorar($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado
+$results = obtenerServiciosComprobaryMejorar($pdo,$orden);
 
 //$pdo = null;
 

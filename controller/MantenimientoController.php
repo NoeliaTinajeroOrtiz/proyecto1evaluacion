@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/MantenimientoModel.php');
 
-
-$results = obtenerServiciosMantenimiento($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado
+$results = obtenerServiciosMantenimiento($pdo,$orden);
 
 //$pdo = null;
 

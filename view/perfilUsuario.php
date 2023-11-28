@@ -33,7 +33,8 @@
 
 <?php
 
-session_start();
+//session_start();
+include ('../model/comprasModel.php');
 
 if (isset($_SESSION["usuario"])) {
     $usuario = $_SESSION["usuario"];
@@ -74,6 +75,24 @@ if (isset($_SESSION["usuario"])) {
         <p>DNI: <?= $usuario['dni'] ?></p>
       
         <a href="modificarDatos.php">Modificar Datos</a>
+        <?php
+
+        $compras = obtenerCompras($pdo, $usuario['id']);
+
+        // Mostrar las compras
+        if (count($compras) > 0) {
+            echo "<h3>Compras realizadas</h3>";
+            foreach ($compras as $compra) {
+                echo "<p>Producto: " . $compra['nombre'] . "</p>";
+                echo "<p>Descripción: " . $compra['descripcion'] . "</p>";
+                echo "<p>Precio: " . $compra['precio'] . "</p>";
+                echo "<hr>";
+            }
+        } else {
+        echo "<p>No se encontraron compras realizadas</p>";
+        }
+
+        ?>
     </body>
     </html>
 

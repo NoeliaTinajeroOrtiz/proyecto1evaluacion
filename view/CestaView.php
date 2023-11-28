@@ -39,6 +39,27 @@ include ('../model/AllIds.php');
 <body>
     <?php
     if (isset ($_SESSION["usuario"])){
+
+        // Obtener la marca de tiempo actual
+        $currentTimestamp = time();
+           // Verificar si la variable de sesión "lastActivity" existe
+    if (isset($_SESSION["lastActivity"])) {
+        $lastActivityTimestamp = $_SESSION["lastActivity"];
+
+        // Calcular la diferencia en segundos entre la marca de tiempo actual y la última actividad
+        $difference = $currentTimestamp - $lastActivityTimestamp;
+
+        // Verificar si han pasado más de dos días (172800 segundos) desde la última actividad
+        if ($difference >= 172800) {
+            // Eliminar los productos del carrito
+            unset($_SESSION["carritoProductos"]);
+            unset($_SESSION["carritoServicios"]);
+        }
+    }
+
+    // Actualizar la marca de tiempo de la última actividad
+    $_SESSION["lastActivity"] = $currentTimestamp;
+
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
     <a href="perfilUsuario.php">Ver mi perfil</a>  
