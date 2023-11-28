@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/InstalarModel.php');
 
-
-$results = obtenerServiciosInstalar($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado
+$results = obtenerServiciosInstalar($pdo,$orden);
 
 //$pdo = null;
 

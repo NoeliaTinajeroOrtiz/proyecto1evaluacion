@@ -84,9 +84,23 @@ include ('../controller/AllServicesController.php');
             <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
-
+     <!-- Formulario para ordenar los productos -->
+     <form method="GET" action="">
+        <label for="orden">Ordenar por:</label>
+        <select name="orden" id="orden">
+            <option value="nombre_asc">Nombre (ascendente)</option>
+            <option value="nombre_desc">Nombre (descendente)</option>
+            <option value="precio_asc">Precio (ascendente)</option>
+            <option value="precio_desc">Precio (descendente)</option>
+        </select>
+        <button type="submit">Ordenar</button>
+    </form>
     <?php
-$results = obtenerServicios($pdo);
+// Obtener el valor seleccionado del formulario
+$orden = $_GET['orden'] ?? '';
+
+// Obtener los productos ordenados según la opción seleccionada
+$results = obtenerServicios($pdo,$orden);
 if ($results) {
     ?>
     <div class="servicios-container">

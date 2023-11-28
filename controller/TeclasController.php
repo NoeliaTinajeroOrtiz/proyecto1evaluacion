@@ -3,8 +3,8 @@
 //include ('../connection/connection.php');
 include('../model/TeclasModel.php');
 
-
-$results = obtenerProductosTeclas($pdo);
+$orden = "nombre_asc"; // Establece el valor predeterminado 
+$results = obtenerProductosTeclas($pdo,$orden);
 
 //$pdo = null;
 
