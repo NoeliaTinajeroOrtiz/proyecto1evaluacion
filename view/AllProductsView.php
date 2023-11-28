@@ -41,6 +41,7 @@ include ('../controller/AllProductsController.php');
     if (isset ($_SESSION["usuario"])){
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
+    <a href="perfilUsuario.php">Ver mi perfil</a>  
     <a href="logout.php">Logout</a>
     <?php
     }else {
