@@ -41,6 +41,7 @@ include ('../model/AllIds.php');
     if (isset ($_SESSION["usuario"])){
         ?>
     <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
+    <a href="perfilUsuario.php">Ver mi perfil</a>  
     <a href="logout.php">Logout</a>
     <form method="POST" action="Comprar.php">
         <button type="submit" class="btn btn-primary">Comprar</button>

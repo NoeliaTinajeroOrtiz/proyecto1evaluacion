@@ -1,7 +1,3 @@
-<?php
-include ('../connection/connection.php');
-
-?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -35,28 +31,15 @@ include ('../connection/connection.php');
 
 </head>
 
-<body>
+<?php
 
-    <?php
-    if (isset ($_SESSION["usuario"])){
-        ?>
-    <h3>Bienvenido <?= $_SESSION['usuario']['nombre']?></h3>
-    <a href="perfilUsuario.php">Ver mi perfil</a>  
-    <a href="logout.php">Logout</a>
-    <?php
-    }else {
+session_start();
 
-        ?>
-    <header>Bienvenidos a la página principal.</header>
-    <div>
-        Si ya está registrado pincha aquí: <a href="formulario_login.php">Login</a>
-    </div>
-    <div>
-        Si aun no está registrado, pincha aquí: <a href="registro.php">Registro</a>
-    </div>
-    <?php
-    }
+if (isset($_SESSION["usuario"])) {
+    $usuario = $_SESSION["usuario"];
     ?>
+
+    <body>
     <nav>
         <ul>
             <li><a href="paginaprincipalView.php">Inicio</a></li>
@@ -83,30 +66,19 @@ include ('../connection/connection.php');
             <li><a href="CestaView.php">Cesta</a></li>
         </ul>
     </nav>
-    <h3>Nuestra Empresa</h3>
-    <p>Aquí podrás encontrar cualquier tipo de repuesto para arreglar tu ordenador o para montarte uno nuevo.
-        Si dispones de página web también te ofrecemos el darte soporte y mantenimiento.
-        Somos una empresa dedicada al campo de la informática desde hace más de 20 años y contamos con trabajadores con
-        bastante experiencia en el sector
-    </p>
+        <h3>Información del Usuario</h3>
+        <!-- Muestra la información del usuario -->
+        <p>Nombre: <?= $usuario['nombre'] ?></p>
+        <p>Email: <?= $usuario['mail'] ?></p>
+        <p>Teléfono: <?= $usuario['telefono'] ?></p>
+        <p>DNI: <?= $usuario['dni'] ?></p>
+      
+        <a href="modificarDatos.php">Modificar Datos</a>
+    </body>
+    </html>
 
-    <h3>Formulario de Contacto</h3>
-    <form method="POST" action="mail.php">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
-
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required><br><br>
-
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" name="mensaje" required></textarea><br><br>
-
-        <input type="submit" value="Enviar">
-    </form>
-    <h3>Otras formas de contacto</h3>
-    <p>Teléfono de contacto: 632145782</p>
-    <p> Ubicación: Calle proyecto nº 1</p>
-
-</body>
-
-</html>
+    <?php
+} else {
+    echo "No se ha iniciado sesión";
+}
+?>
